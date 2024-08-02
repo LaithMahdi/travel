@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:travel/constant/app_font.dart';
 import 'constant/app_color.dart';
+import 'constant/app_font.dart';
+import 'screens/home_screen.dart';
+import 'screens/onboarding_screen.dart';
 import 'screens/splash_screen.dart';
+import 'screens/welcome_screen.dart';
+import 'service/shared_preferences_service.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesService().init();
   runApp(const MyApp());
 }
 
@@ -23,6 +29,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const SplashScreen(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/welcome': (context) => const WelcomeScreen(),
       },
     );
   }

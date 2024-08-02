@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../constant/app_color.dart';
 
-class SplashDot extends StatelessWidget {
-  const SplashDot(
+class OnboardingDot extends StatelessWidget {
+  const OnboardingDot(
       {super.key, required this.currentVideoIndex, required this.index});
 
   final int currentVideoIndex, index;
