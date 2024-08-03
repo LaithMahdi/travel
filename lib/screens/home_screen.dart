@@ -39,17 +39,18 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBody: true,
       body: _pages[_currentPage],
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.circular(50),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
-          child: Container(
-            margin: const EdgeInsets.all(20),
-            height: 90,
-            decoration: BoxDecoration(
-              color: AppColor.black.withOpacity(0.4),
-              borderRadius: BorderRadius.circular(50),
-            ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.zero,
+        margin: const EdgeInsets.all(20),
+        height: 90,
+        decoration: BoxDecoration(
+          color: AppColor.black.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(50),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: List.generate(

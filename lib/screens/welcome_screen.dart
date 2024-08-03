@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:travel/dummy/dummy.dart';
-import 'package:travel/view_models/travel/travel_model.dart';
+import '../view_models/place/place_model.dart';
+import '../view_models/travel/travel_model.dart';
 import '../widgets/welcome/welcome_appbar.dart';
+import '../widgets/welcome/welcome_place_card.dart';
 import '../widgets/welcome/welcome_travel_type.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -22,7 +24,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: const WelcomeAppBar(),
@@ -54,7 +55,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               itemCount: travelList.length,
             ),
           ),
-          SizedBox(height: height * 0.02),
+          SizedBox(height: height * 0.05),
+          ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              PlaceModel place = places[index];
+              return WelcomePlaceCard(place: place, onTap: () {});
+            },
+            separatorBuilder: (context, index) => const SizedBox(height: 20),
+            itemCount: places.length,
+          )
         ],
       ),
     );
