@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:travel/constant/app_font.dart';
 import '../../constant/app_color.dart';
 import '../../view_models/place/place_model.dart';
 import 'welcome_card_icon_arrow.dart';
@@ -29,12 +32,15 @@ class WelcomePlaceCard extends StatelessWidget {
               bottom: 0,
               right: 0,
               left: 0,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.asset(
-                  place.image,
-                  width: width,
-                  fit: BoxFit.fill,
+              child: Hero(
+                tag: place.image,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.asset(
+                    place.image,
+                    width: width,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
@@ -55,9 +61,34 @@ class WelcomePlaceCard extends StatelessWidget {
               ),
             )),
             Positioned(
+              top: 20,
+              right: 20,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+                  decoration: BoxDecoration(
+                    color: AppColor.white.withOpacity(0.25),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                    child: Text(
+                      "${place.nbReview} Reviews",
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: AppColor.black,
+                          fontFamily: AppFont.poppins,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
               bottom: 20,
               right: 20,
-              child: WelcomeCardIconArrow(onTap: () {}),
+              child: WelcomeCardIconArrow(onTap: onTap),
             ),
             Positioned(
               bottom: height * .04,

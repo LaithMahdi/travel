@@ -15,11 +15,11 @@ class WelcomeCardIconArrow extends StatelessWidget {
         width: 60,
         height: 60,
         decoration: BoxDecoration(
-            color: AppColor.white.withOpacity(0.4), shape: BoxShape.circle),
+            color: AppColor.white.withOpacity(0.25), shape: BoxShape.circle),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
             child: Transform.rotate(
               angle: 7,
               child: const Icon(

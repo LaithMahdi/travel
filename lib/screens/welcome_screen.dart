@@ -22,6 +22,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     });
   }
 
+  void _onPlaceSelected(PlaceModel place) {
+    Navigator.of(context)
+        .pushNamed('/place-detail', arguments: {"place": place});
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -61,7 +66,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             shrinkWrap: true,
             itemBuilder: (context, index) {
               PlaceModel place = places[index];
-              return WelcomePlaceCard(place: place, onTap: () {});
+              return WelcomePlaceCard(
+                place: place,
+                onTap: () => _onPlaceSelected(place),
+              );
             },
             separatorBuilder: (context, index) => const SizedBox(height: 20),
             itemCount: places.length,

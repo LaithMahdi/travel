@@ -3,6 +3,7 @@ import 'constant/app_color.dart';
 import 'constant/app_font.dart';
 import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'screens/place_detail_screen.dart';
 import 'screens/splash_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'service/shared_preferences_service.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/onboarding': (context) => const OnboardingScreen(),
         '/home': (context) => const HomeScreen(),
         '/welcome': (context) => const WelcomeScreen(),
+        '/place-detail': (context) => const PlaceDetailScreen(),
       },
     );
   }
